@@ -11,6 +11,7 @@ tfidf = joblib.load('Pickles/tfidf_vectorizer.pkl')
 def getRecommendation(UserName):
 
     #'nmm2592'
+
     user_rec = df_rec.loc[UserName].sort_values(ascending=False)[0:20]
     pred_df = reviews_data[reviews_data.name.isin(user_rec.index)]
 
