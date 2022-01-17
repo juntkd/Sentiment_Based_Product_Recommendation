@@ -12,7 +12,8 @@ import xgboost as xgb
 from sklearn.metrics.pairwise import pairwise_distances
 
 warnings.filterwarnings("ignore")
-reviews_data = pd.read_csv("DataFiles/Sample30.csv")
+#reviews_data = pd.read_csv("DataFiles/Sample30.csv")
+reviews_data = joblib.load('Pickles/reviews_data.pkl')
 stop = stopwords.words('english')
 
 def clean_text(text):
