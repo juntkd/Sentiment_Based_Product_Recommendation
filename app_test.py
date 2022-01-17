@@ -4,8 +4,7 @@ import joblib
 
 app = Flask(__name__)
 
-#reviews_data = pd.read_csv('Sample30.csv')
-xgb_model = joblib.load('Pickles/final_gb_model.pkl')
+df = joblib.load('Pickles/reviews_data.pkl')
 
 @app.route('/')
 def home():
