@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import warnings
 from nltk.tokenize import word_tokenize
-from nltk.corpus import stopwords
+#from nltk.corpus import stopwords
 import joblib
 
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -14,7 +14,9 @@ from sklearn.metrics.pairwise import pairwise_distances
 warnings.filterwarnings("ignore")
 #reviews_data = pd.read_csv("DataFiles/Sample30.csv")
 reviews_data = joblib.load('Pickles/reviews_data.pkl')
-stop = stopwords.words('english')
+stop = joblib.load('Pickles/englsh_stopwords.pkl')
+#stop = stopwords.words('english')
+
 
 def clean_text(text):
 
