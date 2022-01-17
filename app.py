@@ -4,7 +4,7 @@ import pandas as pd
 from flask import Flask, render_template, request
 
 reviews_data = pd.read_csv('DataFiles/Sample30.csv')
-#df_rec = joblib.load('Pickles/final_recomm_model.pkl')
+df_rec = joblib.load('Pickles/final_recomm_model.pkl')
 xgb_model = joblib.load('Pickles/final_gb_model.pkl')
 tfidf = joblib.load('Pickles/tfidf_vectorizer.pkl')
 
@@ -12,7 +12,7 @@ def getRecommendation(UserName):
 
     #'nmm2592'
 
-    df_rec=mdl.recommendation_model(reviews_data)
+    #df_rec=mdl.recommendation_model(reviews_data)
 
     user_rec = df_rec.loc[UserName].sort_values(ascending=False)[0:20]
     pred_df = reviews_data[reviews_data.name.isin(user_rec.index)]

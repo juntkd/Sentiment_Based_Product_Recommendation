@@ -3,7 +3,7 @@ import pandas as pd
 
 app = Flask(__name__)
 
-reviews_data = pd.read_csv('DataFiles//Sample30.csv')
+reviews_data = pd.read_csv('Sample30.csv')
 
 @app.route('/')
 def home():
