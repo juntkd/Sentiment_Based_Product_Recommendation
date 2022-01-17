@@ -3,7 +3,8 @@ import Model as mdl
 import pandas as pd
 from flask import Flask, render_template, request
 
-reviews_data = pd.read_csv('DataFiles/Sample30.csv')
+reviews_data = joblib.load('Pickles/reviews_data.pkl')
+#pd.read_csv('DataFiles/Sample30.csv')
 df_rec = joblib.load('Pickles/final_recomm_model.pkl')
 xgb_model = joblib.load('Pickles/final_gb_model.pkl')
 tfidf = joblib.load('Pickles/tfidf_vectorizer.pkl')
