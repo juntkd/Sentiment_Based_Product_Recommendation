@@ -65,10 +65,12 @@ def train_classification_model(input_df):
         strip_accents='unicode',
         # Remove accents and perform other character normalization during the preprocessing step.
         analyzer='word',  # Whether the feature should be made of word or character n-grams.
-        token_pattern=r'\w{1,}',
-        # Regular expression denoting what constitutes a “token”, only used if analyzer == 'word'
         stop_words='english',
+        max_df=0.95,
+        # min_df = 0.005,
+        max_features=15000,
         sublinear_tf=True)
+    word_vectorizer.fit(X_train.tolist())
 
     word_vectorizer.fit(X_train)
     joblib.dump(word_vectorizer, 'Pickles/tfidf_vectorizer.pkl')
@@ -80,7 +82,7 @@ def train_classification_model(input_df):
 
     X_train_transformed_sm, y_train_sm = sm.fit_resample(X_train_transformed, y_train)
 
-    xgb_clsfr = xgb.XGBClassifier()
+    xgb_clsfr = xgb.XGBClassifier( max_depth=8,  n_estimators=500)
     xgb_clsfr.fit(X_train_transformed_sm, y_train_sm)
     return xgb_clsfr
 
